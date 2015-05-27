@@ -13,6 +13,7 @@
 #define SENSOR_TYPE DHT22
 
 DHT dht(SENSOR, SENSOR_TYPE);
+/* TODO: Move key to EEPROM and have each module read it from there. */
 
 void setup()
 {
@@ -22,7 +23,8 @@ void setup()
 
 void loop()
 {
-  delay(2000);
+  /* Sleep for 1 minute. */
+  delay(60000);
   float h = dht.readHumidity();
   float t = dht.readTemperature(true);
   float hi = dht.computeHeatIndex(t, h);
